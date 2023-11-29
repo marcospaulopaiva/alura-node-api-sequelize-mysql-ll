@@ -52,7 +52,47 @@ class PessoaController {
     } 
   }
 
-  static async pagaMatricula(req, res){
+  static async restauraPessoa(req, res) {
+    const { id } = req.params
+    try {
+      await database.Pessoas.restore( { where: { id: Number(id) }})
+      return res.status(200).json({ mensagem: `id ${id} restaurado`})
+    } catch (error) {
+      return res.status(500).json(error.message)
+    }
+  }
+
+  static async pegaPessoaApagada(req, res) {
+
+    const { id } = req.params
+    try {
+      const umaPessoa = await database.Pessoas.findOne({
+        where: { id: Number(id) },
+        paranoid: false 
+      })
+      return res.status(200).json(umaPessoa)
+    } catch (error) {
+      return res.status(500).json(error.message)
+    }
+  }
+
+  static async apagaPessoaDefinitivo(req, res) {
+    const { id } = req.params
+    try {
+      await database.Pessoas.destroy({ 
+        where: { 
+          id: Number(id)
+        },
+        force: true
+      })
+      return res.status(200).json({message: `id ${id} deletado definitivamente`})
+    } catch (error) {
+      return res.status(500).json(error.message)
+    } 
+  }
+
+  //Matricula
+  static async pegaMatricula(req, res){
     const { estudanteId, matriculaId } = req.params
     try {
       const umaMatricula = await database.Matriculas.findOne( { 
@@ -107,6 +147,53 @@ class PessoaController {
           id: Number(matriculaId),
           estudante_id: Number(estudanteId)
         }
+      })
+      return res.status(200).json({message: `id ${matriculaId} deletado`})
+    } catch (error) {
+      return res.status(500).json(error.message)
+    } 
+  }
+
+  static async restauraMatricula(req, res) {
+    const { estudanteId, matriculaId } = req.params
+    try {
+      await database.Matriculas.restore({
+        where: {
+          id: Number(matriculaId),
+          estudante_id: Number(estudanteId)
+        }
+      })
+      return res.status(200).json({ mensagem: 'matricula restaurada'})
+    } catch (error) {
+      return res.status(500).json(error.message)
+    }
+  }
+
+  static async pegaMatriculaApagada(req, res){
+    const { estudanteId, matriculaId } = req.params
+    try {
+      const umaMatricula = await database.Matriculas.findOne( { 
+        where: { 
+          id: Number(matriculaId),
+          estudante_id: Number(estudanteId) 
+        },
+        paranoid: false
+      })
+      return res.status(200).json(umaMatricula)
+    } catch (error) {
+      return res.status(500).json(error.message)
+    }
+  }
+
+  static async apagaMatriculaDefinitivo(req, res) {
+    const { estudanteId, matriculaId } = req.params
+    try {
+      await database.Matriculas.destroy({ 
+        where: { 
+          id: Number(matriculaId),
+          estudante_id: Number(estudanteId)
+        },
+        force: true
       })
       return res.status(200).json({message: `id ${matriculaId} deletado`})
     } catch (error) {
