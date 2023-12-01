@@ -15,6 +15,26 @@
 						"method": "GET",
 						"header": [],
 						"url": {
+							"raw": "http://localhost:3000/pessoas/todos",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"pessoas",
+								"todos"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "PegaPessoasAtivas",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
 							"raw": "http://localhost:3000/pessoas",
 							"protocol": "http",
 							"host": [
@@ -34,7 +54,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:3000/pessoas/5",
+							"raw": "http://localhost:3000/pessoas/7",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -42,7 +62,7 @@
 							"port": "3000",
 							"path": [
 								"pessoas",
-								"5"
+								"7"
 							]
 						}
 					},
@@ -55,7 +75,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"nome\": \"Rebeca Costa\",\n    \"ativo\": false,\n    \"email\": \"rebeca@rebeca.com\",\n    \"role\": \"estudante\"\n}",
+							"raw": "{\n    \"nome\": \"Joana Carla\",\n    \"ativo\": false,\n    \"email\": \"joao@joao.com\",\n    \"role\": \"estudante\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -161,7 +181,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:3000/pessoas/5/apagada",
+							"raw": "http://localhost:3000/pessoas/7/apagada",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -169,7 +189,7 @@
 							"port": "3000",
 							"path": [
 								"pessoas",
-								"5",
+								"7",
 								"apagada"
 							]
 						}
@@ -192,6 +212,27 @@
 								"pessoas",
 								"5",
 								"definitivo"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "PegaMatriculas",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/pessoas/1/matriculas",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"pessoas",
+								"1",
+								"matriculas"
 							]
 						}
 					},
@@ -350,7 +391,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:3000/turmas",
+							"raw": "http://localhost:3000/turmas?data_inicial=2020-03-02",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -358,6 +399,17 @@
 							"port": "3000",
 							"path": [
 								"turmas"
+							],
+							"query": [
+								{
+									"key": "data_inicial",
+									"value": "2020-03-02"
+								},
+								{
+									"key": "data_final",
+									"value": "2020-07-01",
+									"disabled": true
+								}
 							]
 						}
 					},
@@ -390,7 +442,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n        \"data_inicio\": \"2022-02-01\",\n        \"nivel_id\": 1,\n        \"docente_id\": 6\n}",
+							"raw": "{\n        \"data_inicio\": \"2022-04-01\",\n        \"nivel_id\": 2,\n        \"docente_id\": 2\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -477,6 +529,27 @@
 								"turmas",
 								"1",
 								"restaura"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "pegaTurmasLotadas",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/pessoas/matricula/lotada",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"pessoas",
+								"matricula",
+								"lotada"
 							]
 						}
 					},
@@ -668,6 +741,28 @@
 								"matricula",
 								"6",
 								"definitivo"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "pegaMatriculasPorTurma",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/pessoas/matricula/1/confirmadas",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"pessoas",
+								"matricula",
+								"1",
+								"confirmadas"
 							]
 						}
 					},
