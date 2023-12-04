@@ -237,6 +237,27 @@
 						}
 					},
 					"response": []
+				},
+				{
+					"name": "CancelaPessoa",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/pessoas/2/cancela",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"pessoas",
+								"2",
+								"cancela"
+							]
+						}
+					},
+					"response": []
 				}
 			]
 		},
